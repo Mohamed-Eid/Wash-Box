@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('users', 'Dashboard\UserController');
         Route::resource('projects', 'Dashboard\ProjectController');
         Route::resource('packages', 'Dashboard\PackageController');
+        Route::resource('services', 'Dashboard\ServiceController');
 
 
         Route::group(['prefix' => 'settings'], function (){
