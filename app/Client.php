@@ -20,4 +20,8 @@ class Client extends Model
     {
         return $this->belongsToMany(Package::class)->withPivot('expire_date');
     }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }

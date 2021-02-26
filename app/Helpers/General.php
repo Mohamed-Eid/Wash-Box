@@ -83,7 +83,21 @@ function input_has_error($field , $errors){
 }
 
 
+function get_status_text($status){
+    return [
+        0 => __('site.processing'),
+        1 => __('site.order_confirmed_from_client'),
+        2 => __('site.arrived at the pick-up location'),
+        3 => __('site.received the order'),
+        4 => __('site.order_confirmed_from_wash'),
+        5 => __('site.arrived_delivery_location'),
+        6 => __('site.Order delivered to client'),
+    ][$status];
+}
 
+function get_type_text($type){
+    return __('site.'.$type);
+}
 
 
 

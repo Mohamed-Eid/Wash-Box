@@ -39,4 +39,6 @@ Route::prefix('packages')->group(function () {
     });
 });
 
+Route::resource('orders', 'Api\OrderController')->middleware(['authorizeclient']);
+
 Route::resource('addresses', 'Api\AddressController')->middleware('authorizeclient');

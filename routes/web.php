@@ -21,6 +21,9 @@ Route::get('/about_us', function(){
 Route::resource('projects', 'Frontend\ProjectController')->only(['index', 'show']);
 Route::get('get_more_projects','Frontend\ProjectController@more')->name('more_projects');
 
+
+Route::get('ajax_areas/{city}','AjaxController@areas')->name('cities.ajax.show');
+
 //AdminPanel Routes
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
@@ -35,6 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('projects', 'Dashboard\ProjectController');
         Route::resource('packages', 'Dashboard\PackageController');
         Route::resource('services', 'Dashboard\ServiceController');
+        Route::resource('drivers', 'Dashboard\DriverController');
 
 
         Route::group(['prefix' => 'settings'], function (){
