@@ -67,7 +67,7 @@ class DriverController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Driver $driver)
     {
         //
     }
@@ -78,9 +78,10 @@ class DriverController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Driver $driver)
     {
-        //
+        $areas  = Area::all();
+        return view('dashboard.drivers.edit',compact('driver','areas'));    
     }
 
     /**
@@ -90,9 +91,33 @@ class DriverController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Driver $driver)
     {
-        //
+        $request->validate([
+            'name'     => 'required',
+            'email'    => 'required|unique:drivers,email,'.$driver->id,
+            'mobile'    => 'required|unique:drivers,mobile,'.$driver->id,
+            'area'  => 'required',
+        ]);
+
+        $data = $request->except(['area','password','image']);
+        $data['city_id']  = Area::find($request->area)->city->id;
+        $data['area_id']  = $request->area;
+        
+        if($request->has('password') && $request->password != null ){
+            $data['password'] = bcrypt($request->password);
+        }
+
+        if($request->has('image')){
+            delete_image('drivers',$driver->image);
+            $data['image']    = \upload_image_without_resize('drivers',$request->image);
+        }
+
+
+        $driver->update($data);
+
+        if($driver)
+            return redirect()->back()->with('success','تم تعديل سائق بنجاح');
     }
 
     /**
