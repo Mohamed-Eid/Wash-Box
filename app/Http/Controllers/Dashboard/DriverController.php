@@ -17,7 +17,8 @@ class DriverController extends Controller
      */
     public function index()
     {
-        //
+        $drivers = Driver::all();
+        return view('dashboard.drivers.index',compact('drivers'));
     }
 
     /** 
@@ -126,8 +127,14 @@ class DriverController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Driver $driver)
     {
-        //
+        if ($driver->image != 'default.png' ) {
+            delete_image('drivers',$driver->image);
+        }
+
+        $driver->delete();
+
+        return redirect()->back()->with('success','تم الحذف بنجاح');     
     }
 }

@@ -13,4 +13,12 @@ class Driver extends Model
     public  function getImagePathAttribute(){
         return asset('uploads/drivers/'.$this->image);
     }
+
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
+    public function area(){
+        return $this->belongsTo(Area::class);
+    }
 }
