@@ -15,4 +15,10 @@ class Order extends Model
     public function address(){
         return $this->belongsTo(Address::class);
     }
+
+    public function drivers()
+    {
+        return $this->belongsToMany(Driver::class, 'driver_order', 
+        'order_id', 'driver_id');
+    }
 }

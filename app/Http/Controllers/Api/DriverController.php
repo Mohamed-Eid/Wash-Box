@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Driver;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DriverResource;
+use App\Http\Resources\OrderResource;
+use App\Order;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -123,6 +126,28 @@ class DriverController extends Controller
             return $this->successResponse(  null ,200);
         }
         return $this->errorResponse( [__('api.wrong_password')]);
+    }
+
+    public function free_orders(Request $request){
+
+        $orders = OrderResource::collection(Order::where('area_id',$request->driver->area_id)->where('status',0)->get());
+        return $this->successResponse( $orders, null ,200);
+    }
+    
+    public function order_change_status(Request $request, Order $order){
+
+        $order->update([
+            'status' => $request->status,
+        ]);
+
+        $order->drivers()->sync($request->driver->id);
+
+        return $this->successResponse( new OrderResource($order), null ,200);
+    }
+    //TODO:: Send notifications
+
+    public function driver_orders(Request $request){
+        return $this->successResponse( OrderResource::collection($request->driver->orders), null ,200);
     }
 
 }

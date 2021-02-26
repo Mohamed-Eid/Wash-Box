@@ -32,6 +32,13 @@ Route::prefix('drivers')->group(function () {
         Route::put('update','Api\DriverController@update');
         Route::put('update_fcm','Api\DriverController@update_fcm');
         Route::post('change_password','Api\DriverController@change_password');
+
+        Route::prefix('orders')->group(function () {
+            Route::get('free','Api\DriverController@free_orders');
+            Route::get('my_orders','Api\DriverController@driver_orders');
+            Route::put('change_status/{order}','Api\DriverController@order_change_status');
+        });
+
     });
 });
 

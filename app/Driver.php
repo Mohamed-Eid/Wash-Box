@@ -21,4 +21,10 @@ class Driver extends Model
     public function area(){
         return $this->belongsTo(Area::class);
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'driver_order', 
+         'driver_id','order_id');
+    }
 }

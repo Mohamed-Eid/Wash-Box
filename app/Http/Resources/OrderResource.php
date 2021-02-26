@@ -22,7 +22,7 @@ class OrderResource extends JsonResource
             'order_time'   => $this->created_at->format('H:i:s'),
             'type'         => get_type_text($this->type),
             'address'      => new AddressResource($this->address),
-            'status'       => get_status_text($this->status),
+            'status'       => get_status_text($this->status ?? 0),
         ];
     }
 }

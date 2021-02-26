@@ -19,6 +19,8 @@ class CreateOrdersTable extends Migration
             $table->time('receipt_time');
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->foreignId('address_id')->constrained()->onDelete('cascade');
+            $table->foreignId('area_id')->constrained()->onDelete('cascade');
+            $table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->text('notes')->nullable();
             $table->enum('type',['from_wash','from_client'])->default('from_client')->nullable();
             $table->string('status')->default(0)->nullable();

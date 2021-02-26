@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Address;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
 use Illuminate\Http\Request;
@@ -45,9 +46,15 @@ class OrderController extends Controller
             return $this->errorResponse($validate->errors()->all());
         }
 
+
         $client = $request->client;
 
         $data = $request->all();
+
+        $address= Address::find($request->address_id);
+
+        $data['area_id'] = $address->area_id;
+        $data['city_id'] = $address->city_id;
 
         $order = $client->orders()->create($data);
 
