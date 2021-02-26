@@ -25,6 +25,16 @@ Route::prefix('clients')->group(function () {
     });
 });
 
+Route::prefix('drivers')->group(function () {
+    Route::post('login','Api\DriverController@login');
+    Route::middleware(['authorizedriver'])->group(function () {
+        Route::get('profile','Api\DriverController@profile');
+        Route::put('update','Api\DriverController@update');
+        Route::put('update_fcm','Api\DriverController@update_fcm');
+        Route::post('change_password','Api\DriverController@change_password');
+    });
+});
+
 Route::prefix('cities')->group(function () {
     Route::get('','Api\CityController@index');
     Route::get('{city}','Api\CityController@show');
