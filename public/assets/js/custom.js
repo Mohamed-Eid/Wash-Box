@@ -1,39 +1,4 @@
 $(document).ready( function () {
-
-
-  $('.delete_item_in_form').on('click',function (e) {
-
-    var that = $(this)
-
-    e.preventDefault();
-    
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        }).then((result) => {
-        if (result.value) {
-            that.closest('form').submit();
-
-        // For more information about handling dismissals please visit
-        // https://sweetalert2.github.io/#handling-dismissals
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            Swal.fire(
-                "Cancelled",
-                "Your imaginary file is safe :)", 
-                "error"
-        );
-
-        }
-    })
-
-
-  }); //end of delete
-
   // START:: CHANGE PROFILE PAGE
   $(".image").on('change', function() {
     if (this.files && this.files[0]) {
@@ -47,6 +12,24 @@ $(document).ready( function () {
     };
   });
   // END:: CHANGE PROFILE PAGE
+
+  // START:: CHANGE OFFER PIC
+  $(".offer-image").on('change', function() {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+  
+      reader.onload = (e) => {
+        $('.offer-image-preview').attr('src', e.target.result);
+      }
+  
+      reader.readAsDataURL(this.files[0]);
+    };
+  });
+  // END:: CHANGE OFFER PIC
+
+  $('#remove-offer-pic').on('click', function() {
+    $(this).parent().parent().empty();
+  });
 
   // START:: SELECT2 OPTIONS
   $('#permissions_select2_3').select2({
@@ -211,14 +194,14 @@ $(document).ready( function () {
   // END:: SWEET ALERT
 
   // START:: TEXT EDITOR
-  // ClassicEditor
-  // .create( document.querySelector( '.default' ) )
-  // .then( editor => {
-  //   console.log( editor );
-  // } )
-  // .catch( error => {
-  //   console.error( error );
-  // } );
+  ClassicEditor
+  .create( document.querySelector( '.default' ) )
+  .then( editor => {
+    console.log( editor );
+  } )
+  .catch( error => {
+    console.error( error );
+  } );
   // END:: TEXT EDITOR
 
   // START:: CALC THE REMAINING OF NEW DEAL

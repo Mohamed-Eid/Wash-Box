@@ -37,6 +37,10 @@ body::-webkit-scrollbar-thumb {
 .btn-success {
   background-color: #f0a500 !important;
 }
+
+.bootstrap-select .dropdown-toggle .filter-option {
+  text-align: start;
+}
 /* END:: GLOBAL STYLES */
 
 /* START:: LOGIN PAGE STYLES */
@@ -480,6 +484,12 @@ body::-webkit-scrollbar-thumb {
   min-height: 390px;
 }
 
+.kt-container .custom-portel {
+  min-height: auto !important;
+  margin-bottom: 0;
+  padding: 15px;
+}
+
 .kt-container .kt-portlet .kt-portlet__head .title-container a,
 .kt-container .kt-portlet .kt-portlet__head .title-container button {
   border-color: #f0a500 !important;
@@ -552,6 +562,11 @@ table.dataTable td .kt-badge {
   margin: 2px;
 }
 
+table.dataTable td .custome-badge {
+  width: auto;
+  height: auto;
+}
+
 table.dataTable td .kt-badge i {
   font-size: 18px;
 }
@@ -566,7 +581,7 @@ table.dataTable td .kt-badge i {
 
 /* START:: CUSTOMIZE HR ADD NEW EMPLOYEE PAGE STYLE */
 
-    /* START:: CUSTOMIZE UPLOAD FILES BUTTON STYLE*/
+/* START:: CUSTOMIZE UPLOAD FILES BUTTON STYLE*/
 label.btn.btn-label-brand, a.btn.btn-label-brand, 
 button.btn.btn-label-brand, 
 input.btn.btn-label-brand {
@@ -588,7 +603,7 @@ input.btn.btn-label-brand:hover,
 input.btn.btn-label-brand.active {
   background-color: #f0a500;
 }
-    /* END:: CUSTOMIZE UPLOAD FILES BUTTON STYLE*/
+/* END:: CUSTOMIZE UPLOAD FILES BUTTON STYLE*/
 
 /* END:: CUSTOMIZE HR ADD NEW EMPLOYEE PAGE STYLE */
 
@@ -619,31 +634,94 @@ input.btn.btn-label-brand.active {
 }
 /* END:: CUSTOMIZE SCROLLTOP STYLE */
 
+/* START:: OFFER AND PACKAGE PAGE STYLE */
+.kt-media.kt-media--lg img {
+  max-width: 65px;
+  max-height: 65px;
+  min-width: 65px;
+  min-height: 65px;
+}
+/* END:: OFFER AND PACKAGE PAGE STYLE */
 
-.field_img {display: block; box-shadow: inherit; background: transparent;}
-.field_img:before, .field_img:after {content: ""; display: table; clear: both;}
-.field_img > input {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.04);
-    width: 100%;
-    padding: 15px 5px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-	display: none;
+/* START:: ADD OFFER AND PACKAGE PAGE STYLE */
+.offer-pic {
+  position: relative;
 }
 
-.field_img label {position: relative; text-align: center;}
-.field_img label .img-hover {
-    position: absolute;
-    left: 0;
-    right: 0;
-    line-height: 120px;
-    top: 0;
-    font-size: 33px;
-    background: rgba(41, 59, 143, 0.7);
-    border-radius: 10px;
-    opacity: 0;
-	transition: opacity .3s linear 0s;
-    cursor: pointer;
+.offer-pic .overlay {
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-.field_img img {max-width: 120px; height: 120px; border-radius: 10px;}
-.field_img label:hover .img-hover {opacity: 0.7;}
+
+.offer-pic .overlay i {
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.offer-pic img {
+  max-width: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  min-height: 100px;
+}
+/* END:: ADD OFFER AND PACKAGE PAGE STYLE */
+
+/* START:: CLIENT PROFILE PAGE STYLES */
+.profile-card {
+  border-radius: 10px;
+  border-color: #d1d1d1;
+}
+
+.profile-card .card-head {
+  position: relative;
+}
+
+.profile-card img {
+  max-height: 110px;
+  border-radius: 10px 10px 0 0;
+}
+
+.profile-card .client-pic-box {
+  position: absolute;
+  bottom: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  min-width: 110px;
+  max-width: 110px;
+  min-height: 110px;
+  max-height: 110px;
+  border-radius: 50%;
+  border: 3px solid #f0a500;
+  background-color: #fff;
+}
+
+.profile-card .client-pic-box .client-pic {
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.profile-card .card-body {
+  margin-top: 65px;
+  position: relative;
+}
+
+.profile-card .card-body .client-financ {
+  position: absolute;
+  top: -30px;
+  right: -5px;
+  width: auto;
+  height: auto;
+  padding: 8px;
+}
+/* END:: CLIENT PROFILE PAGE STYLES */
